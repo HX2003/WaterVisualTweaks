@@ -1,0 +1,41 @@
+﻿<Publish>
+	<!--Id must be set in order to update existed mod. it is not required for publishing mod for the first time-->
+	<ModId Value="77260" />
+	<!--Name of the mod to display to players-->
+	<DisplayName Value="Water Visual Tweaks" />
+	<!--Short description of the mod-->
+	<ShortDescription Value="Modifies the visual appearance of the water." />
+	<!--Long description of the mod. Single line or multi line. Supports minimal markdown subset-->
+	<!--LongDescription Value="This is a long description" /-->
+	<LongDescription>
+# Water Visual Tweaks
+You might not like how the water looks by default; use this mod to tweak the scaling and color of the water. This mod is a purely cosmetic mod, it **does not** affect water physics or gameplay. As such, it should be safe to your saves.
+# Presets
+This mod comes with a default preset. This preset may be updated by me, but they will be not applied automatically, you'll have to click it in the settings. As this mod is still in an early phase, don't be caught off guard if your customized settings were reset. For now, it is best to write down your customized settings.
+# Technical Info
+It appears that the water rendering is a slightly modified version of Unity's HDRP water system. The game also uses a custom water material, with a modified water shader. There are 3 Simulation Bands at different scales, and each band is simulated. Then their displacements are added together, with smaller bands being tiled. This, along with some other textures and parameters are passed to the water shader. In this mod, the water shader is not modified at all (it would be difficult to do so, if you know, let me know). Of course, if CO decides to overhaul the water rendering, this mod will cease to work.
+	</LongDescription>
+	<!--Thumbnail-->
+	<Thumbnail Value="Properties/Thumbnail.png" />
+	<!--Screenshot, can be set multiple times-->
+	<Screenshot Value="Properties/ExampleNew.png" />
+	<Screenshot Value="Properties/ExampleOriginal.png" />
+	<Screenshot Value="Properties/ExampleColor.png" />
+	<Screenshot Value="Properties/Thumbnail.png" />
+	<!--Tag, can be set multiple times-->
+	<Tag Value="" />
+	<!--Link to the forum post where the mod can be discussed-->
+	<ForumLink Value="" />
+	<!--Version of the mod-->
+	<ModVersion Value="1.1.1" />
+	<!--Recommended version of the base game to use the mod-->
+	<GameVersion Value="1.1.*" />
+	<!--Dependency for the mod, can be set multiple times-->
+	<Dependency Id="" />
+	<!--Change log for new version. Single line or multi line. Supports minimal markdown subset-->
+	<ChangeLog Value="Log changes, added source code." />
+	<!--ChangeLog>
+	</ChangeLog-->
+	<!--External link. supported types are discord, github, youtube, twitch, x, paypal, patreon-->
+	<ExternalLink Type="github" url="https://github.com/HX2003/WaterVisualTweaks"/>
+</Publish>
