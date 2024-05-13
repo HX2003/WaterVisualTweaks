@@ -12,22 +12,22 @@ namespace WaterVisualTweaksMod.Patches
     {
         public static void Postfix(ref WaterSpectrumParameters __result, WaterSurfaceType type)
         {
-            if (Mod.Instance.settings.SimulationOverrideEnable)
+            if (Mod.Settings.SimulationOverrideEnable)
             {
                 object boxed = (object)__result; // special handling because WaterSpectrumParameters is a struct
 
                 Traverse traverse = Traverse.Create(boxed);
 
                 Vector4 patchSizes = traverse.Field("patchSizes").GetValue<Vector4>();
-                patchSizes.x = Mod.Instance.settings.Large0PatchSize;
-                patchSizes.y = Mod.Instance.settings.Large1PatchSize;
-                patchSizes.z = Mod.Instance.settings.RipplesPatchSize;
+                patchSizes.x = Mod.Settings.Large0PatchSize;
+                patchSizes.y = Mod.Settings.Large1PatchSize;
+                patchSizes.z = Mod.Settings.RipplesPatchSize;
                 traverse.Field("patchSizes").SetValue(patchSizes);
 
                 Vector4 patchWindSpeed = traverse.Field("patchWindSpeed").GetValue<Vector4>();
-                patchWindSpeed.x = Mod.Instance.settings.Large0WindSpeed;
-                patchWindSpeed.y = Mod.Instance.settings.Large1WindSpeed;
-                patchWindSpeed.z = Mod.Instance.settings.RipplesWindSpeed;
+                patchWindSpeed.x = Mod.Settings.Large0WindSpeed;
+                patchWindSpeed.y = Mod.Settings.Large1WindSpeed;
+                patchWindSpeed.z = Mod.Settings.RipplesWindSpeed;
                 traverse.Field("patchWindSpeed").SetValue(patchWindSpeed);
 
                 __result = (WaterSpectrumParameters)boxed;
@@ -40,16 +40,16 @@ namespace WaterVisualTweaksMod.Patches
     {
         public static void Postfix(ref WaterRenderingParameters __result, WaterSurfaceType type)
         {
-            if (Mod.Instance.settings.SimulationOverrideEnable)
+            if (Mod.Settings.SimulationOverrideEnable)
             {
                 object boxed = (object)__result; // special handling because WaterRenderingParameters is a struct
 
                 Traverse traverse = Traverse.Create(boxed);
 
                 Vector4 patchAmplitudeMultiplier = traverse.Field("patchAmplitudeMultiplier").GetValue<Vector4>();
-                patchAmplitudeMultiplier.x = Mod.Instance.settings.Large0AmplitudeMultiplier;
-                patchAmplitudeMultiplier.y = Mod.Instance.settings.Large1AmplitudeMultiplier;
-                patchAmplitudeMultiplier.z = Mod.Instance.settings.RipplesAmplitudeMultiplier;
+                patchAmplitudeMultiplier.x = Mod.Settings.Large0AmplitudeMultiplier;
+                patchAmplitudeMultiplier.y = Mod.Settings.Large1AmplitudeMultiplier;
+                patchAmplitudeMultiplier.z = Mod.Settings.RipplesAmplitudeMultiplier;
                 traverse.Field("patchAmplitudeMultiplier").SetValue(patchAmplitudeMultiplier);
 
                 __result = (WaterRenderingParameters)boxed;
@@ -69,9 +69,9 @@ namespace WaterVisualTweaksMod.Patches
                 HashSet<WaterSurface> instances = (HashSet<WaterSurface>)fieldInfo.GetValue(null);
                 foreach (WaterSurface instance in instances)
                 {
-                    instance.startSmoothness = Mod.Instance.settings.StartSmoothness;
-                    instance.endSmoothness = Mod.Instance.settings.EndSmoothness;
-                    if (Mod.Instance.settings.CausticsUseRippleBand)
+                    instance.startSmoothness = Mod.Settings.StartSmoothness;
+                    instance.endSmoothness = Mod.Settings.EndSmoothness;
+                    if (Mod.Settings.CausticsUseRippleBand)
                     {
                         instance.causticsBand = 2;
                     }
@@ -80,15 +80,15 @@ namespace WaterVisualTweaksMod.Patches
                         instance.causticsBand = 1;
                     }
                     
-                    instance.absorptionDistance = Mod.Instance.settings.AbsorptionDistance;
-                    instance.refractionColor.r = Mod.Instance.settings.RefractionColorR;
-                    instance.refractionColor.g = Mod.Instance.settings.RefractionColorG;
-                    instance.refractionColor.b = Mod.Instance.settings.RefractionColorB;
-                    instance.scatteringColor.r = Mod.Instance.settings.ScatteringColorR;
-                    instance.scatteringColor.g = Mod.Instance.settings.ScatteringColorG;
-                    instance.scatteringColor.b = Mod.Instance.settings.ScatteringColorB;
-                    instance.causticsIntensity = Mod.Instance.settings.CausticsIntensity;
-                    instance.virtualPlaneDistance = Mod.Instance.settings.CausticsVirtualPlaneDistance;
+                    instance.absorptionDistance = Mod.Settings.AbsorptionDistance;
+                    instance.refractionColor.r = Mod.Settings.RefractionColorR;
+                    instance.refractionColor.g = Mod.Settings.RefractionColorG;
+                    instance.refractionColor.b = Mod.Settings.RefractionColorB;
+                    instance.scatteringColor.r = Mod.Settings.ScatteringColorR;
+                    instance.scatteringColor.g = Mod.Settings.ScatteringColorG;
+                    instance.scatteringColor.b = Mod.Settings.ScatteringColorB;
+                    instance.causticsIntensity = Mod.Settings.CausticsIntensity;
+                    instance.virtualPlaneDistance = Mod.Settings.CausticsVirtualPlaneDistance;
                 }
             }
         }

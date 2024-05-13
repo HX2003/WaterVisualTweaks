@@ -10,14 +10,13 @@ namespace WaterVisualTweaksMod
     public class Mod : IMod
     {
         public static ILog log = LogManager.GetLogger($"{nameof(WaterVisualTweaksMod)}").SetShowsErrorsInUI(false);
-        public Setting settings;
 
         private Harmony m_Harmony;
 
         /// <summary>
-        /// Gets the static reference to the mod instance.
+        /// Gets the static reference to the settings.
         /// </summary>
-        public static Mod Instance
+        public static WaterVisualTweaksSettings Settings
         {
             get;
             private set;
@@ -25,15 +24,13 @@ namespace WaterVisualTweaksMod
 
         public void OnLoad(UpdateSystem updateSystem)
         {   
-            Instance = this;
-
             if (GameManager.instance.modManager.TryGetExecutableAsset(this, out var asset))
                 log.Info($"{nameof(WaterVisualTweaksMod)}.{nameof(OnLoad)} Current mod asset at {asset.path}");
 
-            settings = new Setting(this);
-            settings.RegisterInOptionsUI();
-            GameManager.instance.localizationManager.AddSource("en-US", new LocaleEN(settings));
-            AssetDatabase.global.LoadSettings(nameof(WaterVisualTweaksMod), settings, new Setting(this));
+            Settings = new WaterVisualTweaksSettings(this);
+            Settings.RegisterInOptionsUI();
+            GameManager.instance.localizationManager.AddSource("en-US", new LocaleEN(Settings));
+            AssetDatabase.global.LoadSettings(nameof(WaterVisualTweaksMod), Settings, new WaterVisualTweaksSettings(this));
 
             log.Info($"{nameof(WaterVisualTweaksMod)}.{nameof(OnLoad)} Injecting Harmony Patches.");
             m_Harmony = new Harmony("WaterVisualTweaksModHarmony");
@@ -43,10 +40,10 @@ namespace WaterVisualTweaksMod
         public void OnDispose()
         {
             log.Info($"{nameof(WaterVisualTweaksMod)}.{nameof(OnDispose)}");
-            if (settings != null)
+            if (Settings != null)
             {
-                settings.UnregisterInOptionsUI();
-                settings = null;
+                Settings.UnregisterInOptionsUI();
+                Settings = null;
             }
             m_Harmony.UnpatchAll();
         }
