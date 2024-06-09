@@ -37,5 +37,5 @@ It appears that the water rendering is a slightly modified version of Unity's HD
 	<!--ChangeLog>
 	</ChangeLog-->
 	<!--External link. supported types are discord, github, youtube, twitch, x, paypal, patreon-->
-	<ExternalLink Type="github" url="https://github.com/HX2003/WaterVisualTweaks"/>
+	<ExternalLink Type="github" Url="https://github.com/HX2003/WaterVisualTweaks"/>
 </Publish>
