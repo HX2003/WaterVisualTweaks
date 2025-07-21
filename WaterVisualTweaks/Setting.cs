@@ -137,14 +137,14 @@ namespace WaterVisualTweaksMod
 
             // Material parameters
             StartSmoothness = 0.8f;
-            EndSmoothness = 0.65f;
+            EndSmoothness = 0.8f;
             AbsorptionDistance = 8.0f;
             RefractionColorR = 0.1f;
-            RefractionColorG = 0.575f;
-            RefractionColorB = 0.575f;
+            RefractionColorG = 0.55f;
+            RefractionColorB = 0.55f;
             ScatteringColorR = 0.0f;
-            ScatteringColorG = 0.475f;
-            ScatteringColorB = 0.475f;
+            ScatteringColorG = 0.42f;
+            ScatteringColorB = 0.42f;
 
             // Caustics parameters
             CausticsUseRippleBand = true;
